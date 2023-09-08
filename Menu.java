@@ -3,47 +3,90 @@ import java.util.Scanner;
 public class Menu {
     public static void main(String[] args) {
 
+        // Program takes input in the form of integers in the value x, range 0 < x <
+        // 100.
+        // If input falls outside of this range a while loop will keep asking for the
+        // same input.
+        // If input is valid then the value will be stored in an array of integers and
+        // while loop continues.
+        // After 7 iterations the program will exit and return the input result.
+
         Scanner input = new Scanner(System.in);
 
-        String systemMenu = "\n Welcome to the menu. Choose one of the options below: \n 1. Register new scores for students. \n 2. Print all registered grades. \n 3. Calculate the mean of the entered scores. \n 4. Find the two highest and two lowest scores. \n 5. Find the highest score and its position. \n 6. Collect hashtags from a post. \n 7. To exit. \n";
-        System.out.println(systemMenu);
-        System.out.println("Type your option:");
-        int userOptionInMenu = input.nextInt();
+        int[] scoreArray = new int[7];
+        String[] suffixArray = { "st", "nd", "rd", "th", "th", "th", "th" };
+        int i = 0;
 
-//        Only options between 1 and 7 are acceptable. If the user enters a value out
-//        of the range above, print an error message saying “Error - Invalid value.
-//            Please type between 1 and 7”. Once the user provides a valid option,
-//                proceed to the tasks as specified above.
+        System.out.println("Please enter 7 integer scores.");
 
-        do {
-            if (userOptionInMenu == 1) {
-                //-- space for Ex 1 --//
+        while (i < suffixArray.length) {
+            System.out.printf("Enter the score for the %d%s student ", i + 1, suffixArray[i]);
 
+            int score = input.nextInt();
+            input.nextLine();
+
+            if (score > 100 || score < 0) {
+                System.out.println("Error - Input out of bound. Score can only be between 0 and 100.");
+            } else {
+                scoreArray[i] = score;
+                i++;
+            }
+        }
+
+        System.out.printf("%s %n", "Thank you for your input.\nYour entered scores are:");
+        // From input array the program prints all integers by a for loop.
+        // An if-statement runs so no comma is printed before the first word.
+        boolean firstWord = true;
+        for (int scoreElement : scoreArray) {
+            if (firstWord) {
+                System.out.print(scoreElement);
+                firstWord = false;
+            } else {
+                System.out.printf(", %s ", scoreElement);
             }
 
-            if (userOptionInMenu == 2) {
-                //-- space for Ex 2 --//
+        }
 
-            }
-            if (userOptionInMenu == 3) {
-                //-- space for Ex 3 --//
+        // task 4
 
-            }
-            if (userOptionInMenu == 4) {
-                //-- space for Ex 4 --//
-            }
-            if (userOptionInMenu == 5) {
-                //-- space for Ex 5 --//
+        int lowestScore = Integer.MAX_VALUE;
+        int secondLowestScore = Integer.MAX_VALUE;
+        int highestScore = Integer.MIN_VALUE;
+        int secondHighestScore = Integer.MIN_VALUE;
 
+        for (int score : scoreArray) {
+            if (score < lowestScore) {
+                secondLowestScore = lowestScore;
+                lowestScore = score;
+            } else if (score < secondLowestScore) {
+                secondLowestScore = score;
             }
-            if (userOptionInMenu == 6) {
-                //-- space for Ex 6 --//
 
+            if (score > highestScore) {
+                secondHighestScore = highestScore;
+                highestScore = score;
+            } else if (score > secondHighestScore) {
+                secondHighestScore = score;
             }
-            if (userOptionInMenu == 7) {
-                System.out.println("Thank you for using our grading system. Have a nice day! ");
+        }
+
+        System.out.println(" \nType your option: \nThe two lowest scores provided are " + lowestScore + ", and "
+                + secondLowestScore);
+        System.out.println("The two highest scores provided are " + highestScore + ", and " + secondHighestScore);
+
+        int positionOfHighestScore = -1;
+
+        for (int count = 0; count < scoreArray.length; count++) {
+            if (scoreArray[count] == highestScore) {
+                positionOfHighestScore = count;
             }
-        } while (userOptionInMenu != 7);
+        }
+        int pos = positionOfHighestScore + 1;
+        if (positionOfHighestScore != -1) {
+            System.out.printf("%s %s %s %s %s %s","The highest score is " , highestScore , " and belongs to the " , positionOfHighestScore+1, suffixArray[positionOfHighestScore] , " student");
+        }
+
         input.close();
     }
+
 }
