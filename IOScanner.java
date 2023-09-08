@@ -1,4 +1,3 @@
-package Assignment1;
 import java.util.Scanner;
 public class IOScanner {
     public static Scanner input() {
