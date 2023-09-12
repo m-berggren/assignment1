@@ -5,7 +5,6 @@ public class IOScanner {
         this.scanner = new Scanner(System.in);
     }
     // Methods for reading int, string, double.
-
     public int readInt() {
         int num = scanner.nextInt();
         scanner.nextLine();

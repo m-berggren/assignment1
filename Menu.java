@@ -1,10 +1,12 @@
 import java.util.Locale;
 
 public class Menu {
-    static IOScanner input = new IOScanner();
+    static IOScanner input = new IOScanner(); // input new IOScanner
 
     public static void main(String[] args) {
         int userOptionInMenu;
+
+        // call function which is responsible for entering grades
         int[] arrayOfScores = readGrade();
 
         do {
@@ -23,8 +25,11 @@ public class Menu {
 
             // ask user to assign the value of variable "userOptionInMenu" to call the tasks in menu later
             System.out.println("Type your option:");
+
+            // readInt instead of nextInt because of the IOScanner
             userOptionInMenu = input.readInt();
 
+            // define two messages to use them later in switch, and make code more readable
             String exitConsoleMessage = "Thank you for using our grading system. Have a nice day!";
             String errorConsoleMessage = "Error - Invalid value. Please type between 1 and 7.";
 
@@ -40,7 +45,7 @@ public class Menu {
                 default -> System.out.println(errorConsoleMessage);
             }
 
-            // we have an option to rewrite this part of the code(switch) with help of if statements
+            // we have an option to rewrite this part of the code(switch) with the help of if statements
             // however, code will be harder to understand and not as compact
             //if (userOptionInMenu > 7 || userOptionInMenu < 0 ){ System.out.println(errorMessage); }
             //if (userOptionInMenu == 1) {}
@@ -51,9 +56,9 @@ public class Menu {
             //if (userOptionInMenu == 6) {}
             //else if (userOptionInMenu == 7) { System.out.println(exitMessage); }
 
-        } while (userOptionInMenu != 7); // do loop works while value of the variable is not equal to 7
+        } while (userOptionInMenu != 7); // do-while loop works while value of the variable is not equal to 7
 
-        input.close(); // we should always close the scanner
+        input.close(); // to close the scanner
     }
     public static int[] readGrade() {
         /* Function reads inputs and stores them in an array.
@@ -76,10 +81,9 @@ public class Menu {
             }
         }
         printGrades(scoreArray, "Thank you for your input. Your entered scores are: ");
-        
+
         return scoreArray;
     }
-
     public static void printGrades(int[] intArray, String message) {
         // This function prints all elements in a chosen array through a for loop.
 
@@ -93,7 +97,6 @@ public class Menu {
         }
         System.out.println();
     }
-
     public static double calculateMean(int[] array) {
         // this code will help to count the mean of 7 numbers(student points),
         // which would be assigned by user in the console
@@ -111,7 +114,6 @@ public class Menu {
         System.out.printf("The mean of the numbers is %.2f%n", meanOfPoints);
         return meanOfPoints;
     }
-
     public static int highLowValues(int[] array, int intParam) {
         int lowestScore = 0;
         int secondLowestScore = 0;
@@ -119,7 +121,7 @@ public class Menu {
         int secondHighestScore = 0;
 
         for(int i=0; i < array.length; i++) {
-            
+
             if(i == 0){
                 lowestScore = array[i];
             }
@@ -143,13 +145,12 @@ public class Menu {
         }
         if(intParam == 4) {
             System.out.println("\nThe two lowest scores provided are " + lowestScore + ", and "
-                + secondLowestScore);
+                    + secondLowestScore);
             System.out.println("The two highest scores provided are " + highestScore + ", and " + secondHighestScore);
         }
-        
+
         return highestScore;
     }
-
     public static void findHighestScorePosition(int[] array){
         int positionOfHighestScore = -1;
         int highestScore = highLowValues(array, 5);
@@ -168,7 +169,6 @@ public class Menu {
                     positionOfHighestScore + 1, suffixesArray[positionOfHighestScore], "student" );
         }
     }
-
     public static void collectHashtags() {
         /* Function collects words beginning with a hashtag.
         Words are stored in an array created from input string.
