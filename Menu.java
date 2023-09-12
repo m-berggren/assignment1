@@ -168,6 +168,46 @@ public class Menu {
 
         } while (userOptionInMenu != 7); // do loop works while value of the variable is not equal to 7
 
+        public static void printScores(int[] intArray, String message) {
+        System.out.printf("%s %n", message);
+        for (int i=0; i < intArray.length; i++) {
+            if (i == 0) {
+            System.out.print(intArray[i]);
+            } else {
+            System.out.printf(", %s", intArray[i]);
+            }
+        }
+        System.out.println();
+    }
+
+    public static void collectHashtags() {
+        System.out.print("Type your post: ");
+        String inputString = input.readString();
+
+        String[] words = inputString.split("\\s+");
+        String hashtags = "Hashtags found: ";
+
+        int hashCounter = 0;
+
+        for(int i=0; i < words.length; i++) {
+            if(words[i].startsWith("#")) {
+            
+                if(i == words.length - 1) {
+                    hashtags += words[i];
+                } else {
+                    hashtags += words[i] + " ";
+                }
+                hashCounter++;
+            }
+        }
+        
+        if(hashCounter > 0) {
+            System.out.println(hashtags);
+        } else {
+            System.out.println("No hashtags were typed");
+        }
+    }
+
         input.close(); // we should always close the scanner
     }
 }
