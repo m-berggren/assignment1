@@ -1,0 +1,16 @@
+public static double calculateMean () {
+            // this code will help to count the mean of 7 numbers(student points),
+            // which would be assigned by user in the console
+            double sumOfScores = 0;
+            for (double score : scoreArray()) {
+                sumOfScores = sumOfScores + score; // not to stuck in nested loop
+            }
+
+            double meanOfPoints = 0.0;
+            if (scoreArray().length > 0) {
+                meanOfPoints = sumOfScores / scoreArray().length;
+            }
+            Locale.setDefault(Locale.ENGLISH); // with help of this command decimal symbols would be with dot
+            System.out.printf("The mean of the numbers is %.2f", meanOfPoints);
+            return meanOfPoints;
+        }
