@@ -44,22 +44,22 @@ public class Menu {
         //paste ex 2
     }
     class MeanCalculating {
-//        public static double calculateMean () {
-//            // this code will help to count the mean of 7 numbers(student points),
-//            // which would be assigned by user in the console
-//            double sumOfScores = 0;
-//            for (double score : scoreArray()) {
-//                sumOfScores = sumOfScores + score; // not to stuck in nested loop
-//            }
-//
-//            double meanOfPoints = 0.0;
-//            if (scoreArray().length > 0) {
-//                meanOfPoints = sumOfScores / scoreArray().length;
-//            }
-//            Locale.setDefault(Locale.ENGLISH); // with help of this command decimal symbols would be with dot
-//            System.out.printf("The mean of the numbers is %.2f", meanOfPoints);
-//            return meanOfPoints;
-//        }
+        public static double calculateMean () {
+            // this code will help to count the mean of 7 numbers(student points),
+            // which would be assigned by user in the console
+            double sumOfScores = 0;
+            for (double score : scoreArray()) {
+                sumOfScores = sumOfScores + score; // not to stuck in nested loop
+            }
+
+            double meanOfPoints = 0.0;
+            if (scoreArray().length > 0) {
+                meanOfPoints = sumOfScores / scoreArray().length;
+            }
+            Locale.setDefault(Locale.ENGLISH); // with help of this command decimal symbols would be with dot
+            System.out.printf("The mean of the numbers is %.2f", meanOfPoints);
+            return meanOfPoints;
+        }
     }
     class FindHighLowScore {
 //        public static int findHighLowScore() {
@@ -120,6 +120,7 @@ public class Menu {
 
         // calling a function that is responsible for entering points of student in the console
         ScoreValue.scoreArray();
+        int[] arrayOfScores = ScoreValue.scoreArray();
 
         do {
             // the visual part of the menu that is printed in the console
@@ -145,14 +146,14 @@ public class Menu {
 
             // execute various cases by changing value of "userOptionInMenu"
             switch (userOptionInMenu) {
-//                case 1 -> ScoreValue.scoreArray();
-//                case 2 -> GradesPrinting.();
-//                case 3-> MeanCalculating.calculateMean();
-//                case 4-> FindHighLowScore.findHighLowScore();
-//                case 5-> FindScorePosition.findScorePosition();
-//                case 6-> CollectHashtags.();
-//                case 7 -> System.out.println(exitConsoleMessage);
-//                default -> System.out.println(errorConsoleMessage);
+                case 1 -> ScoreValue.scoreArray();
+                case 2 -> GradesPrinting.();
+                case 3-> MeanCalculating.calculateMean();
+                case 4-> FindHighLowScore.findHighLowScore();
+                case 5-> FindScorePosition.findScorePosition();
+                case 6-> CollectHashtags.();
+                case 7 -> System.out.println(exitConsoleMessage);
+                default -> System.out.println(errorConsoleMessage);
             }
 
             // we have an option to rewrite this part of the code(switch) with help of if statements
@@ -167,46 +168,6 @@ public class Menu {
             //else if (userOptionInMenu == 7) { System.out.println(exitMessage); }
 
         } while (userOptionInMenu != 7); // do loop works while value of the variable is not equal to 7
-
-        public static void printScores(int[] intArray, String message) {
-        System.out.printf("%s %n", message);
-        for (int i=0; i < intArray.length; i++) {
-            if (i == 0) {
-            System.out.print(intArray[i]);
-            } else {
-            System.out.printf(", %s", intArray[i]);
-            }
-        }
-        System.out.println();
-    }
-
-    public static void collectHashtags() {
-        System.out.print("Type your post: ");
-        String inputString = input.readString();
-
-        String[] words = inputString.split("\\s+");
-        String hashtags = "Hashtags found: ";
-
-        int hashCounter = 0;
-
-        for(int i=0; i < words.length; i++) {
-            if(words[i].startsWith("#")) {
-            
-                if(i == words.length - 1) {
-                    hashtags += words[i];
-                } else {
-                    hashtags += words[i] + " ";
-                }
-                hashCounter++;
-            }
-        }
-        
-        if(hashCounter > 0) {
-            System.out.println(hashtags);
-        } else {
-            System.out.println("No hashtags were typed");
-        }
-    }
 
         input.close(); // we should always close the scanner
     }
