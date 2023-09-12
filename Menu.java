@@ -1,126 +1,11 @@
 import java.util.Locale;
-import java.util.Scanner;
 
 public class Menu {
-    class ScoreValue {
-        public static void Task1(String[] args) {
-            int[] anArray = scoreArray();
-            for(int arrayElement : anArray) {
-                System.out.print(arrayElement + " ");
-            }
-        }
-        public static int[] scoreArray() {
-
-            // Program takes input in the form of integers in the value x, range 0 < x < 100.
-            // If input falls outside of this range a while loop will keep asking for the same input.
-            // If input is valid then the value will be stored in an array of integers and while loop continues.
-            // After 7 iterations the program will exit and return the input result.
-
-            Scanner input = new Scanner(System.in);
-
-            int[] scoreArray = new int[7];
-            String[] suffixArray = {"st", "nd", "rd", "th", "th", "th", "th"};
-            int i = 0;
-
-            System.out.println("Please enter 7 integer scores.");
-
-            while (i < suffixArray.length) {
-                System.out.printf("Enter the score for the %d%s student ", i+1, suffixArray[i]);
-
-                int score = input.nextInt();
-                input.nextLine();
-
-                if(score > 100 || score < 0) {
-                    System.out.println("Error - Input out of bound. Score can only be between 0 and 100.");
-                } else {
-                    scoreArray[i] = score;
-                    i++;
-                }
-            }
-            return scoreArray;
-        }
-    }
-    class GradesPrinting {
-        //paste ex 2
-    }
-    class MeanCalculating {
-        public static double calculateMean () {
-            // this code will help to count the mean of 7 numbers(student points),
-            // which would be assigned by user in the console
-            double sumOfScores = 0;
-            for (double score : scoreArray()) {
-                sumOfScores = sumOfScores + score; // not to stuck in nested loop
-            }
-
-            double meanOfPoints = 0.0;
-            if (scoreArray().length > 0) {
-                meanOfPoints = sumOfScores / scoreArray().length;
-            }
-            Locale.setDefault(Locale.ENGLISH); // with help of this command decimal symbols would be with dot
-            System.out.printf("The mean of the numbers is %.2f", meanOfPoints);
-            return meanOfPoints;
-        }
-    }
-    class FindHighLowScore {
-//        public static int findHighLowScore() {
-//            int lowestScore = Integer.MAX_VALUE;
-//            int secondLowestScore = Integer.MAX_VALUE;
-//            int highestScore = Integer.MIN_VALUE;
-//            int secondHighestScore = Integer.MIN_VALUE;
-//
-//            for (int score : scoreArray()) {
-//                if (score < lowestScore) {
-//                    secondLowestScore = lowestScore;
-//                    lowestScore = score;
-//                } else if (score < secondLowestScore) {
-//                    secondLowestScore = score;
-//                }
-//
-//                if (score > highestScore) {
-//                    secondHighestScore = highestScore;
-//                    highestScore = score;
-//                } else if (score > secondHighestScore) {
-//                    secondHighestScore = score;
-//                }
-//            }
-//
-//            System.out.println(" \nType your option: \nThe two lowest scores provided are " + lowestScore + ", and " + secondLowestScore);
-//            System.out.println("The two highest scores provided are " + highestScore + ", and " + secondHighestScore);
-//            return highestScore;
-//        }
-    }
-    class FindScorePosition {
-//        public static int findScorePosition() {
-//            int positionOfHighestScore = -1;
-//            boolean foundHighestScore = false;
-//            int highestScore;
-//
-//            for (int count = 0; count < scoreArray.length; count++) {
-//                if (scoreArray[count] == highestScore && !foundHighestScore) {
-//                    positionOfHighestScore = count;
-//                    foundHighestScore = true;
-//                }
-//            }
-//
-//            if (foundHighestScore) {
-//                System.out.printf("%s %s %s %s%s %s", "The highest score is", highestScore, "and belongs to the",
-//                        positionOfHighestScore + 1, suffixArray[positionOfHighestScore], "student");
-//            }
-//
-//            return highestScore;
-//        }
-    }
-    class CollectHashtags {
-    //paste ex 6
-    }
+    static IOScanner input = new IOScanner();
 
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
         int userOptionInMenu;
-
-        // calling a function that is responsible for entering points of student in the console
-        ScoreValue.scoreArray();
-        int[] arrayOfScores = ScoreValue.scoreArray();
+        int[] arrayOfScores = readGrade();
 
         do {
             // the visual part of the menu that is printed in the console
@@ -138,20 +23,21 @@ public class Menu {
 
             // ask user to assign the value of variable "userOptionInMenu" to call the tasks in menu later
             System.out.println("Type your option:");
-            userOptionInMenu = input.nextInt();
-            input.nextLine();
+            userOptionInMenu = input.readInt();
 
             String exitConsoleMessage = "Thank you for using our grading system. Have a nice day!";
             String errorConsoleMessage = "Error - Invalid value. Please choose a number between 1 and 7.";
 
             // execute various cases by changing value of "userOptionInMenu"
             switch (userOptionInMenu) {
-                case 1 -> ScoreValue.scoreArray();
-                case 2 -> GradesPrinting.();
-                case 3-> MeanCalculating.calculateMean();
-                case 4-> FindHighLowScore.findHighLowScore();
-                case 5-> FindScorePosition.findScorePosition();
-                case 6-> CollectHashtags.();
+                case 1 -> arrayOfScores = readGrade()
+
+                ;
+                case 2 -> printScores(arrayOfScores, "Your entered scores are: ");
+                case 3 -> calculateMean(arrayOfScores);
+//                case 4 -> ;
+//                case 5 -> ;
+                case 6 -> collectHashtags();
                 case 7 -> System.out.println(exitConsoleMessage);
                 default -> System.out.println(errorConsoleMessage);
             }
@@ -170,5 +56,78 @@ public class Menu {
         } while (userOptionInMenu != 7); // do loop works while value of the variable is not equal to 7
 
         input.close(); // we should always close the scanner
+    }
+    public static int[] readGrade() {
+        int[] scoreArray = new int[7];
+        String[] suffixArray = { "st", "nd", "rd", "th", "th", "th", "th" };
+        int i = 0;
+
+        while(i < suffixArray.length) {
+            System.out.printf("Enter the score for the %d%s student ", i + 1, suffixArray[i]);
+            int score = input.readInt();
+
+            if (score > 100 || score < 0) {
+                System.out.println("Error - Input out of bound. Score can only be between 0 and 100.");
+            } else {
+                scoreArray[i] = score;
+                i++;
+            }
+        }
+        return scoreArray;
+    }
+    public static void printScores(int[] intArray, String message) {
+        System.out.printf("%s %n", message);
+        for (int i=0; i < intArray.length; i++) {
+            if (i == 0) {
+                System.out.print(intArray[i]);
+            } else {
+                System.out.printf(", %s", intArray[i]);
+            }
+        }
+        System.out.println();
+    }
+    public static double calculateMean(int[] array) {
+        // this code will help to count the mean of 7 numbers(student points),
+        // which would be assigned by user in the console
+        double sumOfScores = 0;
+
+        for (double score : array) {
+            sumOfScores = sumOfScores + score; // not to stuck in nested loop
+        }
+
+        double meanOfPoints = 0.0;
+        if (array.length > 0) {
+            meanOfPoints = sumOfScores / array.length;
+        }
+        Locale.setDefault(Locale.ENGLISH); // with help of this command decimal symbols would be with dot
+        System.out.printf("The mean of the numbers is %.2f", meanOfPoints);
+        return meanOfPoints;
+    }
+    public static void collectHashtags() {
+        System.out.print("Type your post: ");
+        String inputString = input.readString();
+
+        String[] words = inputString.split("\\s+");
+        String hashtags = "Hashtags found: ";
+
+        int hashCounter = 0;
+
+        for(int i=0; i < words.length; i++) {
+            if(words[i].startsWith("#")) {
+
+                if(i == words.length - 1) {
+                    hashtags += words[i];
+                } else {
+                    hashtags += words[i] + " ";
+                }
+                hashCounter++;
+            }
+        }
+
+        if(hashCounter > 0) {
+            System.out.println(hashtags);
+        } else {
+            System.out.println("No hashtags were typed");
+        }
     }
 }
