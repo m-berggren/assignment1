@@ -1,3 +1,4 @@
+
 import java.util.Locale;
 
 public class Menu {
@@ -38,7 +39,7 @@ public class Menu {
                 case 1 -> arrayOfScores = readGrade();
                 case 2 -> printGrades(arrayOfScores, "Your entered scores are:");
                 case 3 -> calculateMean(arrayOfScores);
-                case 4 -> highLowValues(arrayOfScores, 4);
+                case 4 -> highLowValues(arrayOfScores);
                 case 5 -> findHighestScorePosition(arrayOfScores);
                 case 6 -> collectHashtags();
                 case 7 -> System.out.println(exitConsoleMessage);
@@ -48,12 +49,12 @@ public class Menu {
             // we have an option to rewrite this part of the code(switch) with the help of if statements
             // however, code will be harder to understand and not as compact
             //if (userOptionInMenu > 7 || userOptionInMenu < 0 ){ System.out.println(errorMessage); }
-            //if (userOptionInMenu == 1) {}
-            //if (userOptionInMenu == 2) {}
-            //if (userOptionInMenu == 3) {}
-            //if (userOptionInMenu == 4) {}
-            //if (userOptionInMenu == 5) {}
-            //if (userOptionInMenu == 6) {}
+            //else if (userOptionInMenu == 1) {}
+            //else if (userOptionInMenu == 2) {}
+            //else if (userOptionInMenu == 3) {}
+            //else if (userOptionInMenu == 4) {}
+            //else if (userOptionInMenu == 5) {}
+            //else if (userOptionInMenu == 6) {}
             //else if (userOptionInMenu == 7) { System.out.println(exitMessage); }
 
         } while (userOptionInMenu != 7); // do-while loop works while value of the variable is not equal to 7
@@ -84,82 +85,77 @@ public class Menu {
 
         return scoreArray;
     }
-    public static void printGrades(int[] intArray, String message) {
+    public static void printGrades(int[] arrayForScores, String message) {
         // This function prints all elements in a chosen array through a for loop.
-
         System.out.printf("%s%n", message);
-        for (int i=0; i < intArray.length; i++) {
+        for (int i=0; i < arrayForScores.length; i++) {
             if (i == 0) {
-                System.out.print(intArray[i]);
+                System.out.print(arrayForScores[i]);
             } else {
-                System.out.printf(", %s", intArray[i]);
+                System.out.printf(", %s", arrayForScores[i]);
             }
         }
         System.out.println();
     }
-    public static double calculateMean(int[] array) {
+    public static double calculateMean(int[] arrayForScores) {
         // this code will help to count the mean of 7 numbers(student points),
         // which would be assigned by user in the console
         double sumOfScores = 0;
 
-        for (double score : array) {
+        for (double score : arrayForScores) {
             sumOfScores = sumOfScores + score; // not to stuck in nested loop
         }
 
         double meanOfPoints = 0.0;
-        if (array.length > 0) {
-            meanOfPoints = sumOfScores / array.length;
+        if (arrayForScores.length > 0) {
+            meanOfPoints = sumOfScores / arrayForScores.length;
         }
         Locale.setDefault(Locale.ENGLISH); // with help of this command decimal symbols would be with dot
         System.out.printf("The mean of the numbers is %.2f%n", meanOfPoints);
         return meanOfPoints;
     }
-    public static int highLowValues(int[] array, int intParam) {
+    public static int highLowValues(int[] arrayForScores) {
         int lowestScore = 0;
         int secondLowestScore = 0;
         int highestScore = 0;
         int secondHighestScore = 0;
 
-        for(int i=0; i < array.length; i++) {
-
+        for(int i=0; i < arrayForScores.length; i++) {
             if(i == 0){
-                lowestScore = array[i];
+                lowestScore = arrayForScores[i];
             }
             if(i == 1){
-                secondLowestScore = array[i];
+                secondLowestScore = arrayForScores[i];
             }
 
-            if (array[i] < lowestScore) {
+            if (arrayForScores[i] < lowestScore) {
                 secondLowestScore = lowestScore;
-                lowestScore = array[i];
-            } else if (array[i] < secondLowestScore) {
-                secondLowestScore = array[i];
+                lowestScore = arrayForScores[i];
+            } else if (arrayForScores[i] < secondLowestScore) {
+                secondLowestScore = arrayForScores[i];
             }
 
-            if (array[i] > highestScore) {
+            if (arrayForScores[i] > highestScore) {
                 secondHighestScore = highestScore;
-                highestScore = array[i];
-            } else if (array[i] > secondHighestScore) {
-                secondHighestScore = array[i];
+                highestScore = arrayForScores[i];
+            } else if (arrayForScores[i] > secondHighestScore) {
+                secondHighestScore = arrayForScores[i];
             }
         }
-        if(intParam == 4) {
-            System.out.println("\nThe two lowest scores provided are " + lowestScore + ", and "
-                    + secondLowestScore);
-            System.out.println("The two highest scores provided are " + highestScore + ", and " + secondHighestScore);
-        }
+        System.out.println("\nThe two lowest scores provided are " + lowestScore + ", and " + secondLowestScore);
+        System.out.println("The two highest scores provided are " + highestScore + ", and " + secondHighestScore);
 
         return highestScore;
     }
-    public static void findHighestScorePosition(int[] array){
+    public static void findHighestScorePosition(int[] arrayForScores){
         int positionOfHighestScore = -1;
-        int highestScore = highLowValues(array, 5);
+        int highestScore = highLowValues(arrayForScores);
 
         boolean foundHighestScore = false;
         String[] suffixesArray = { "st", "nd", "rd", "th", "th", "th", "th" };
 
-        for (int count = 0; count < array.length; count++) {
-            if (array[count] == highestScore && !foundHighestScore) {
+        for (int count = 0; count < arrayForScores.length; count++) {
+            if (arrayForScores[count] == highestScore && !foundHighestScore) {
                 positionOfHighestScore = count;
                 foundHighestScore = true;
             }
