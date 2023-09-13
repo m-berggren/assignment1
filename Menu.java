@@ -85,9 +85,9 @@ public class Menu {
 
         return scoreArray;
     }
-    public static void printGrades(int[] arrayForScores, String message) {
+    public static void printGrades(int[] arrayForScores, String messageWithScores) {
         // This function prints all elements in a chosen array through a for loop.
-        System.out.printf("%s%n", message);
+        System.out.printf("%s%n", messageWithScores);
         for (int i=0; i < arrayForScores.length; i++) {
             if (i == 0) {
                 System.out.print(arrayForScores[i]);
