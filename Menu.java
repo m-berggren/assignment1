@@ -48,14 +48,6 @@ public class Menu {
 
             // we have an option to rewrite this part of the code(switch) with the help of if statements
             // however, code will be harder to understand and not as compact
-            //if (userOptionInMenu > 7 || userOptionInMenu < 0 ){ System.out.println(errorMessage); }
-            //else if (userOptionInMenu == 1) {}
-            //else if (userOptionInMenu == 2) {}
-            //else if (userOptionInMenu == 3) {}
-            //else if (userOptionInMenu == 4) {}
-            //else if (userOptionInMenu == 5) {}
-            //else if (userOptionInMenu == 6) {}
-            //else if (userOptionInMenu == 7) { System.out.println(exitMessage); }
 
         } while (userOptionInMenu != 7); // do-while loop works while value of the variable is not equal to 7
 
