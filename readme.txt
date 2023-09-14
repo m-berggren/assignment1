@@ -4,3 +4,5 @@ Assignment plan :
 - Oleksandr Kozlov worked on exercise number 4 and 5
 
 Exercise 9 was done in cooperation of the whole team
+- Danylo took charge of naming and organizing all the functions within the switch statement
+- Marcus and Oleksandr were responsible for encapsulating the exercises within these functions.
