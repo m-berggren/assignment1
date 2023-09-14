@@ -1,24 +1,23 @@
 import java.util.Scanner;
 public class IOScanner {
-    private final Scanner scanner;
-    public IOScanner() {
-        this.scanner = new Scanner(System.in);
+    static Scanner scannerObj = new Scanner(System.in);
+
+    static int readInt() {
+        int intNumber = scannerObj.nextInt();
+        scannerObj.nextLine();
+        return intNumber;
     }
-    // Methods for reading int, string, double.
-    public int readInt() {
-        int num = scanner.nextInt();
-        scanner.nextLine();
-        return num;
+    static int readIntWithMessage(String messageFromString) {
+        System.out.println(messageFromString);
+        int intNumber = scannerObj.nextInt();
+        scannerObj.nextLine();
+        return intNumber;
     }
-    public double readDouble() {
-        double dbl = scanner.nextDouble();
-        scanner.nextLine();
-        return dbl;
+    static String readStringWithMessage(String messageFromString) {
+        System.out.println(messageFromString);
+        return scannerObj.nextLine();
     }
-    public String readString() {
-        return scanner.nextLine();
-    }
-    public void close() {
-        scanner.close();
+    static void close() {
+        scannerObj.close();
     }
 }
