@@ -3,7 +3,6 @@ import java.util.Locale;
 public class Menu {
     static String[] suffixArray = { "st", "nd", "rd", "th", "th", "th", "th" };
     static int[] arrayOfScores = new int[7];
-
     static int lowestScore = 0;
     static int secondLowestScore = 0;
     static int highestScore = 0;
@@ -11,10 +10,9 @@ public class Menu {
 
     public static void main(String[] args) {
         int userOptionInMenu;
-        readGrade();
 
-        // call function which is responsible for entering grades
-
+        readGrade(); // call function which is responsible for entering grades
+        
         do {
             // the visual part of the menu that is printed in the console
             String systemMenu = (
@@ -35,11 +33,10 @@ public class Menu {
             // readInt instead of nextInt because of the IOScanner
             userOptionInMenu = IOScanner.readInt();
 
-            // define two messages to use them later in switch, and make code more readable
+            // define three messages to use them later in switch, and make code more readable
             String highestAndLowestMessage = "%nThe two lowest scores provided are %d, and %d%nThe two highest scores provided are %d, and %d";
             String exitConsoleMessage = "Thank you for using our grading system. Have a nice day!";
             String errorConsoleMessage = "Error - Invalid value. Please type between 1 and 7.";
-            
 
             // execute various cases by changing value of "userOptionInMenu"
             switch (userOptionInMenu) {
@@ -67,7 +64,7 @@ public class Menu {
         /* Function reads inputs and stores them in an array.
         While loop is used to handle cases when entered score is less than 0 or over 100,
         so loop can continue. */
-        
+
         int i = 0;
 
         while(i < suffixArray.length) {
@@ -81,13 +78,12 @@ public class Menu {
                 i++;
             }
         }
-        // This function will loop over arrayOfScores and print every element
         printGrades("Thank you for your input. Your entered scores are: ");
 
         return arrayOfScores;
     }
     public static void printGrades(String messageWithScores) {
-        // This function prints all elements in arrayOfScores through a for loop.
+        // This function prints all elements in a chosen array through a for loop.
         System.out.printf("%s%n", messageWithScores);
         for (int i=0; i < arrayOfScores.length; i++) {
             if (i == 0) {
@@ -142,11 +138,10 @@ public class Menu {
             }
         }
     }
-
     public static void findHighestScorePosition(){
         int positionOfHighestScore = -1;
         highLowValues();
-        
+
         boolean foundHighestScore = false;
 
         for (int count = 0; count < arrayOfScores.length; count++) {
@@ -162,12 +157,11 @@ public class Menu {
     }
     public static void collectHashtags() {
         /* Function collects words beginning with a hashtag.
-        Words are stored in an array created by inputs.
+        Words are stored in an array created from input string.
         */
         System.out.print("Type your post: ");
         String inputString = IOScanner.readString();
 
-        // Splits inputString into an array.
         String[] words = inputString.split("\\s+");
         String hashtags = "Hashtags found: ";
 
@@ -176,7 +170,6 @@ public class Menu {
         for(int i=0; i < words.length; i++) {
             if(words[i].startsWith("#")) {
 
-                // Adds a whitespace when 'i' is not the last element in the array.
                 if(i == words.length - 1) {
                     hashtags += words[i];
                 } else {
@@ -185,6 +178,7 @@ public class Menu {
                 hashCounter++;
             }
         }
+
         if(hashCounter > 0) {
             System.out.println(hashtags);
         } else {
