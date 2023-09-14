@@ -37,7 +37,6 @@ public class Menu {
             String exitConsoleMessage = "Thank you for using our grading system. Have a nice day!";
             String errorConsoleMessage = "Error - Invalid value. Please type between 1 and 7.";
             
-
             // execute various cases by changing value of "userOptionInMenu"
             switch (userOptionInMenu) {
                 case 1 -> readGrade();
