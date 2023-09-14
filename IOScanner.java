@@ -3,16 +3,17 @@ public class IOScanner {
     static Scanner scanner = new Scanner(System.in);
     
     static int readInt() {
-        int num = scanner.nextInt();
+        int intNumber = scanner.nextInt();
         scanner.nextLine();
-        return num;
+        return intNumber;
     }
     static double readDouble() {
-        double dbl = scanner.nextDouble();
+        double doubleNumber = scanner.nextDouble();
         scanner.nextLine();
-        return dbl;
+        return doubleNumber;
     }
-    static String readString() {
+    static String readStringWithMessage(String messageFromString) {
+        System.out.println(messageFromString);
         return scanner.nextLine();
     }
     static void close() {
