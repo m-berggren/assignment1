@@ -30,7 +30,6 @@ public class Menu {
             System.out.println(systemMenu);
 
             // ask user to assign the value of variable "userOptionInMenu" to call the tasks in menu later
-            // readInt instead of nextInt because of the IOScanner
             userOptionInMenu = IOScanner.readIntWithMessage("Type your option:");
 
             // define two messages to use them later in switch, and make code more readable
