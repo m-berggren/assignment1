@@ -11,10 +11,10 @@ public class Menu {
 
     public static void main(String[] args) {
         int userOptionInMenu;
-        readGrade();
 
         // call function which is responsible for entering grades
-
+        readGrade();
+        
         do {
             // the visual part of the menu that is printed in the console
             String systemMenu = (
@@ -35,7 +35,7 @@ public class Menu {
             // readInt instead of nextInt because of the IOScanner
             userOptionInMenu = IOScanner.readInt();
 
-            // define two messages to use them later in switch, and make code more readable
+            // define three messages to use them later in switch, and make code more readable
             String highestAndLowestMessage = "%nThe two lowest scores provided are %d, and %d%nThe two highest scores provided are %d, and %d";
             String exitConsoleMessage = "Thank you for using our grading system. Have a nice day!";
             String errorConsoleMessage = "Error - Invalid value. Please type between 1 and 7.";
