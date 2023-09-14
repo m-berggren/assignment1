@@ -11,9 +11,9 @@ public class Menu {
 
     public static void main(String[] args) {
         int userOptionInMenu;
-        readGrade();
 
         // call function which is responsible for entering grades
+        readGrade();
 
         do {
             // the visual part of the menu that is printed in the console
@@ -32,7 +32,7 @@ public class Menu {
             // ask user to assign the value of variable "userOptionInMenu" to call the tasks in menu later
             userOptionInMenu = IOScanner.readIntWithMessage("Type your option:");
 
-            // define two messages to use them later in switch, and make code more readable
+            // define three messages to use them later in switch, and make code more readable
             String highestAndLowestMessage = "%nThe two lowest scores provided are %d, and %d%nThe two highest scores provided are %d, and %d";
             String exitConsoleMessage = "Thank you for using our grading system. Have a nice day!";
             String errorConsoleMessage = "Error - Invalid value. Please type between 1 and 7.";
@@ -106,7 +106,7 @@ public class Menu {
 
         double meanOfPoints = 0.0;
         if (arrayOfScores.length > 0) {
-            meanOfPoints = sumOfScores / arrayOfScores.length;
+            meanOfPoints = sumOfScores / arrayOfScores.length; 
         }
         Locale.setDefault(Locale.ENGLISH); // with help of this command decimal symbols would be with dot
         System.out.printf("The mean of the numbers is %.2f%n", meanOfPoints);
