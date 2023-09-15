@@ -3,7 +3,6 @@ import java.util.Locale;
 public class Menu {
     static String[] suffixArray = { "st", "nd", "rd", "th", "th", "th", "th" };
     static int[] arrayOfScores = new int[7];
-
     static int lowestScore = 0;
     static int secondLowestScore = 0;
     static int highestScore = 0;
