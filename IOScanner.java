@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 public class IOScanner {
     static Scanner scannerObj = new Scanner(System.in);
