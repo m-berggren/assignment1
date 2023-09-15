@@ -1,7 +1,7 @@
 import java.util.Locale;
 
 public class Menu {
-    private static final int ITERATIONS = 7;
+    static final int ITERATIONS = 7;
     static int[] arrayOfScores = new int[ITERATIONS];
 
     static int lowestScore = 0;
