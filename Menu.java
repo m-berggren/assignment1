@@ -111,11 +111,12 @@ public class Menu {
         System.out.printf("The mean of the numbers is %.2f%n", meanOfPoints);
         return meanOfPoints;
     }
-     //this part of code is used to find highest and lowest values from the user's input from console
     public static void highLowValues() {
+        //this part of code is used to find highest and lowest values from the user's input from console
         highestScore = 0;
         secondHighestScore = 0;
-      //here we arrange values for highest and secondHighest scores in the order of elements in array
+        
+        //here we arrange values for highest and secondHighest scores in the order of elements in array
         for(int i=0; i < arrayOfScores.length; i++) {
             if(i == 0){
                 lowestScore = arrayOfScores[i];
@@ -123,14 +124,14 @@ public class Menu {
             if(i == 1){
                 secondLowestScore = arrayOfScores[i];
             }
-// we use variables lowestScore, secondLowestScore throughout an array and change their values depending if the next one is lower than previous one in array 
+            // we use variables lowestScore, secondLowestScore throughout an array and change their values depending if the next one is lower than previous one in array 
             if (arrayOfScores[i] < lowestScore) {
                 secondLowestScore = lowestScore;
                 lowestScore = arrayOfScores[i];
             } else if (arrayOfScores[i] < secondLowestScore) {
                 secondLowestScore = arrayOfScores[i];
             }
-// we use variables highestScore and secondHighestScore throughout an array and change their values depending if the next one is higher than previous one in array  
+            // we use variables highestScore and secondHighestScore throughout an array and change their values depending if the next one is higher than previous one in array  
             if (arrayOfScores[i] > highestScore) {
                 secondHighestScore = highestScore;
                 highestScore = arrayOfScores[i];
@@ -139,8 +140,8 @@ public class Menu {
             }
         }
     }
-//this function is used to find the position of highest score in array
     public static void findHighestScorePosition(){
+        //this function is used to find the position of highest score in array
         int positionOfHighestScore = -1;
         highLowValues();//we use the values of elements from the previous function
         
