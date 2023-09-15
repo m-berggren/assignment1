@@ -8,15 +8,19 @@ public class Menu {
     static int secondLowestScore = 0;
     static int highestScore = 0;
     static int secondHighestScore = 0;
-    static int userOptionInMenu = 0;
 
     public static void main(String[] args) {
+        int userOptionInMenu;
+
         // call function which is responsible for entering grades
         readGrade();
 
         do {
             // call function which is responsible for printing menu
             printMenu();
+
+            // ask user to assign the value of variable "userOptionInMenu" to call the tasks in menu later
+            userOptionInMenu = IOScanner.readIntWithMessage("Type your option:");
 
             // define three messages to use them later in switch, and make code more readable
             String highestAndLowestMessage = "%nThe two lowest scores provided are %d, and %d%nThe two highest scores provided are %d, and %d";
@@ -58,9 +62,6 @@ public class Menu {
                         "7. To exit.\n"
         );
         System.out.println(systemMenu);
-
-        // ask user to assign the value of variable "userOptionInMenu" to call the tasks in menu later
-        userOptionInMenu = IOScanner.readIntWithMessage("Type your option:");
     }
     public static int[] readGrade() {
         /* Function reads inputs and stores them in an array.
@@ -72,7 +73,7 @@ public class Menu {
         while(i < ITERATIONS) {
             int studentCount = i+1;
             System.out.printf("Enter the score for the %d%s student ", studentCount, getSuffix(studentCount));
-            int score = IOScanner.readInt();
+            int score = IOScanner.readIntWithMessage("");
 
             if (score > 100 || score < 0) {
                 System.out.println("Error - Input out of bound. Score can only be between 0 and 100.");
