@@ -70,8 +70,8 @@ public class Menu {
         int i = 0;
 
         while(i < ITERATIONS) {
-            int student = i+1;
-            System.out.printf("Enter the score for the %d%s student ", student, getSuffix(student));
+            int studentCount = i+1;
+            System.out.printf("Enter the score for the %d%s student ", studentCount, getSuffix(studentCount));
             int score = IOScanner.readInt();
 
             if (score > 100 || score < 0) {
@@ -172,7 +172,7 @@ public class Menu {
         }
         if (foundHighestScore) { //printing highest score and its affiliation to the student's number
             System.out.printf("%s %s %s %s%s %s%n", "The highest score is", highestScore, "and belongs to the",
-                    positionOfHighestScore + 1, getSuffix(positionOfHighestScore), "student" ); //printing highest score and its position with the corresponding suffix for student number
+                    positionOfHighestScore + 1, getSuffix(positionOfHighestScore + 1), "student" ); //printing highest score and its position with the corresponding suffix for student number
         }
     }
     public static void collectHashtags() {
@@ -188,14 +188,14 @@ public class Menu {
 
         int hashCounter = 0;
 
-        for(int i=0; i < words.length; i++) {
-            if(words[i].startsWith("#")) {
+        for(int count=0; count < words.length; count++) {
+            if(words[count].startsWith("#")) {
 
                 // Adds a whitespace when 'i' is not the last element in the array.
-                if(i == words.length - 1) {
-                    hashtags += words[i];
+                if(count == words.length - 1) {
+                    hashtags += words[count];
                 } else {
-                    hashtags += words[i] + " ";
+                    hashtags += words[count] + " ";
                 }
                 hashCounter++;
             }
