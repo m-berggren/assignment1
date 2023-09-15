@@ -1,4 +1,3 @@
-
 import java.util.Locale;
 
 public class Menu {
@@ -71,8 +70,8 @@ public class Menu {
         int i = 0;
 
         while(i < ITERATIONS) {
-            int student = i+1;
-            System.out.printf("Enter the score for the %d%s student ", student, getSuffix(student));
+            int studentCount = i+1;
+            System.out.printf("Enter the score for the %d%s student ", studentCount, getSuffix(studentCount));
             int score = IOScanner.readInt();
 
             if (score > 100 || score < 0) {
@@ -112,7 +111,8 @@ public class Menu {
             }
         }
         System.out.println();
-    }    public static double calculateMean() {
+    }
+    public static double calculateMean() {
         // this code will help to count the mean of 7 numbers(student points),
         // which would be assigned by user in the console
         double sumOfScores = 0;
@@ -161,7 +161,6 @@ public class Menu {
     public static void findHighestScorePosition(){
         //this function is used to find the position of highest score in array
         int positionOfHighestScore = -1;
-
         highLowValues();//we use the values of elements from the previous function
 
         boolean foundHighestScore = false;//used to find the first occurence of the element
@@ -174,7 +173,7 @@ public class Menu {
         }
         if (foundHighestScore) { //printing highest score and its affiliation to the student's number
             System.out.printf("%s %s %s %s%s %s%n", "The highest score is", highestScore, "and belongs to the",
-                    positionOfHighestScore + 1, getSuffix(positionOfHighestScore), "student" ); //printing highest score and its position with the corresponding suffix for student number
+                    positionOfHighestScore + 1, getSuffix(positionOfHighestScore + 1), "student" ); //printing highest score and its position with the corresponding suffix for student number
         }
     }
     public static void collectHashtags() {
@@ -190,14 +189,14 @@ public class Menu {
 
         int hashCounter = 0;
 
-        for(int i=0; i < words.length; i++) {
-            if(words[i].startsWith("#")) {
+        for(int count=0; count < words.length; count++) {
+            if(words[count].startsWith("#")) {
 
                 // Adds a whitespace when 'i' is not the last element in the array.
-                if(i == words.length - 1) {
-                    hashtags += words[i];
+                if(count == words.length - 1) {
+                    hashtags += words[count];
                 } else {
-                    hashtags += words[i] + " ";
+                    hashtags += words[count] + " ";
                 }
                 hashCounter++;
             }
